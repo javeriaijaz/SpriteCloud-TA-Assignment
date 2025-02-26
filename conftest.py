@@ -1,7 +1,11 @@
 import pytest
-from selenium import webdriver
 import tempfile
 import shutil
+import chromedriver_autoinstaller
+from selenium import webdriver
+
+# Automatically install the appropriate ChromeDriver version
+chromedriver_autoinstaller.install()
 
 @pytest.fixture(scope="function")
 def setup():

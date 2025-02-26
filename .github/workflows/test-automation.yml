@@ -3,10 +3,10 @@ name: UI & API Test Automation
 on:
   push:
     branches:
-      - main  # Runs on push to main
+      - main
   pull_request:
     branches:
-      - main  # Runs on pull requests
+      - main
 
 jobs:
   test:
@@ -14,32 +14,24 @@ jobs:
 
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v4  # Updated checkout action
+      uses: actions/checkout@v4  # Checkout action to get the code
 
     - name: Set up Python
-      uses: actions/setup-python@v4  # Updated setup-python action
+      uses: actions/setup-python@v4  # Set up Python environment
       with:
-        python-version: '3.9'  # Use Python 3.9
-
-    - name: Verify requirements.txt exists
-      run: |
-        if [ ! -f requirements.txt ]; then
-          echo "requirements.txt not found! Exiting...";
-          exit 1;
-        else
-          echo "requirements.txt found!";
-        fi
+        python-version: '3.9'
 
     - name: Install Dependencies
       run: |
-        pip install -r requirements.txt  # Install project dependencies
+        pip install -r requirements.txt  # Install dependencies from requirements.txt
+        pip install chromedriver-autoinstaller  # Install chromedriver autoinstaller
 
     - name: Run UI & API Tests
       run: |
         pytest --html=report.html  # Run tests and generate HTML report
 
     - name: Upload Test Report
-      uses: actions/upload-artifact@v4  # ✅ Updated upload-artifact action
+      uses: actions/upload-artifact@v4  # Upload test report as an artifact
       with:
         name: test-report
-        path: report.html  # Uploads test report as an artifact
+        path: report.html  # Upload the HTML report
