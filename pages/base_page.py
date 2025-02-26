@@ -51,3 +51,8 @@ class BasePage:
             return True
         except TimeoutException:
             return False
+
+    def get_elements_text(self, locator, timeout=10):
+        """Retrieve text from multiple elements as a list."""
+        elements = WebDriverWait(self.driver, timeout).until(EC.presence_of_all_elements_located(locator))
+        return [element.text for element in elements]
