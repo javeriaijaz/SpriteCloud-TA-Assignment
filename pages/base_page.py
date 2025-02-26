@@ -23,7 +23,7 @@ class BasePage:
             EC.visibility_of_element_located(locator)
         )
 
-    def wait_for_element_clickable(self, locator, timeout=10):
+    def wait_for_element_clickable(self, locator, timeout=30):
         """Waits for an element to be clickable before clicking."""
         return WebDriverWait(self.driver, timeout).until(
             EC.element_to_be_clickable(locator)
@@ -40,7 +40,7 @@ class BasePage:
         element.clear()  # Clear any existing text before entering new text
         element.send_keys(text)
 
-    def get_text(self, locator, timeout=10):
+    def get_text(self, locator, timeout=30):
         """Waits for an element to be visible and returns its text."""
         return self.wait_for_element_visible(locator, timeout).text
 
