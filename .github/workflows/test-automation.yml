@@ -3,28 +3,28 @@ name: UI & API Test Automation
 on:
   push:
     branches:
-      - main
+      - main  # Runs on push to main
   pull_request:
     branches:
-      - main
+      - main  # Runs on pull requests
 
 jobs:
   test:
-    runs-on: ubuntu-latest  # Runs on a Linux server in GitHub Actions
+    runs-on: ubuntu-latest  # Runs on Linux server in GitHub Actions
 
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v4  # Checkout action to get the code
+      uses: actions/checkout@v4  # Checkout code from the repository
 
     - name: Set up Python
       uses: actions/setup-python@v4  # Set up Python environment
       with:
-        python-version: '3.9'
+        python-version: '3.9'  # Use Python 3.9
 
     - name: Install Dependencies
       run: |
-        pip install -r requirements.txt  # Install dependencies from requirements.txt
-        pip install chromedriver-autoinstaller  # Install chromedriver autoinstaller
+        pip install -r requirements.txt  # Install dependencies
+        pip install chromedriver-autoinstaller  # Ensure ChromeDriver is installed
 
     - name: Run UI & API Tests
       run: |
@@ -34,4 +34,4 @@ jobs:
       uses: actions/upload-artifact@v4  # Upload test report as an artifact
       with:
         name: test-report
-        path: report.html  # Upload the HTML report
+        path: report.html  # Path to the generated HTML report
