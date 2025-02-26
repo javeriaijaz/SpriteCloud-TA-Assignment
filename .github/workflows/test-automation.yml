@@ -33,7 +33,6 @@ jobs:
     - name: Install Dependencies
       run: |
         pip install -r requirements.txt  # Install project dependencies
-        pip install pytest               # Ensure pytest is installed
 
     - name: Run UI & API Tests
       run: |
