@@ -1,11 +1,11 @@
 import pytest
 from selenium import webdriver
 import tempfile
-import os
+import shutil
 
 @pytest.fixture(scope="function")
 def setup():
-    # Create a temporary directory for user data
+    # Create a temporary directory for user data (unique for each test)
     user_data_dir = tempfile.mkdtemp()
 
     # Set up Chrome options
@@ -15,11 +15,9 @@ def setup():
     # Initialize the WebDriver with the options
     driver = webdriver.Chrome(options=chrome_options)
 
-    yield driver  # This will provide the WebDriver instance to the tests
+    yield driver  # Yield the driver to the test
 
-    # Clean up after the test (e.g., delete temporary user data directory)
-    driver.quit()
-    try:
-        os.rmdir(user_data_dir)  # Remove the temp user data directory after the test
-    except Exception as e:
-        print(f"Failed to remove temp directory: {e}")
+    driver.quit()  # Quit the WebDriver after the test
+
+    # Clean up: Remove the temp directory after the test
+    shutil.rmtree(user_data_dir)
