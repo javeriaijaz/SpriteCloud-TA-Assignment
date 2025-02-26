@@ -32,15 +32,18 @@ class TestSorting:
         login_page.open()  # Open the login page
         login_page.login("standard_user", "secret_sauce")  # Log in with standard user credentials
 
-        # Step 2: Now, let's change the sorting order to Z-A
-        inventory_page.select_sort_order("Name (Z to A)")  # This selects the 'Z-A' sorting from the dropdown
+       # Step 2: Get the product names before sorting
+        product_names_before_sorting = inventory_page.get_product_names()
 
-        # Step 3: Get the product names after sorting
+        # Step 3: Apply Z-A sorting from the dropdown
+        inventory_page.select_sort_order("Name (Z to A)")
+
+        # Step 4: Get the product names after sorting
         product_names_after_sorting = inventory_page.get_product_names()
 
-        # Step 4: Check if the product names are correctly sorted in reverse (Z-A) order
-        sorted_product_names = sorted(product_names_after_sorting, reverse=True)
+        # Step 5: Reverse the product names before sorting to simulate the expected Z-A order
+        reversed_product_names_before_sorting = list(reversed(product_names_before_sorting))
 
-        # Let's assert that the products are indeed sorted Z-A
-        assert product_names_after_sorting == sorted_product_names, f"Sorting failed! Expected Z-A order, but got {product_names_after_sorting}"
-
+        # Step 6: Assert that the product names after sorting match the reversed list from before sorting
+        assert product_names_after_sorting == reversed_product_names_before_sorting, \
+            f"Sorting failed! Expected reverse order, but got {product_names_after_sorting}"
