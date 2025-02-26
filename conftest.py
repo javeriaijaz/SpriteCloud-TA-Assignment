@@ -1,21 +1,24 @@
 import pytest
-import chromedriver_autoinstaller
 from selenium import webdriver
+import chromedriver_autoinstaller
 
-# Automatically install the appropriate ChromeDriver version that matches the installed version of Chrome
+# Automatically install the correct version of ChromeDriver
 chromedriver_autoinstaller.install()
 
 @pytest.fixture(scope="function")
 def setup():
-    # Set up Chrome options without user data dir and debugging port
+    # Set up Chrome options
     chrome_options = webdriver.ChromeOptions()
-    chrome_options.add_argument("--disable-extensions")  # Disable extensions to ensure test isolation
+    chrome_options.add_argument("--disable-extensions")  # Disable extensions to ensure clean test runs
     chrome_options.add_argument("--no-sandbox")  # Avoid sandboxing issues, common in CI environments
-    chrome_options.add_argument("--disable-dev-shm-usage")  # Avoid memory issues in CI environments
+    chrome_options.add_argument("--disable-dev-shm-usage")  # Avoid issues related to limited memory in CI environments
+    chrome_options.add_argument("--headless")  # Run Chrome in headless mode (no UI)
+    chrome_options.add_argument("--remote-debugging-port=9222")  # Use remote debugging port (for troubleshooting)
+    chrome_options.add_argument("--verbose")  # Enable verbose logging
 
-    # Initialize the WebDriver with the above options
+    # Initialize the WebDriver
     driver = webdriver.Chrome(options=chrome_options)
 
     yield driver  # Yield the driver to the test
 
-    driver.quit()  # Quit the WebDriver after the test is complete
+    driver.quit()  # Quit the WebDriver after the test is done
