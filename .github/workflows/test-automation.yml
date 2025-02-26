@@ -3,10 +3,10 @@ name: UI & API Test Automation
 on:
   push:
     branches:
-      - main  # Run tests when code is pushed to main
+      - main  # Runs on push to main
   pull_request:
     branches:
-      - main  # Run tests when a pull request is created for main
+      - main  # Runs on pull requests
 
 jobs:
   test:
@@ -14,23 +14,23 @@ jobs:
 
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v2  # Fetch latest code from GitHub
+      uses: actions/checkout@v4  # Updated checkout action
 
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4  # Updated setup-python action
       with:
-        python-version: '3.9'  # Python version for the project
+        python-version: '3.9'  # Use Python 3.9
 
     - name: Install Dependencies
       run: |
-        pip install -r requirements.txt  # Install dependencies
+        pip install -r requirements.txt  # Install project dependencies
 
     - name: Run UI & API Tests
       run: |
-        pytest --html=report.html  # Run tests & generate report
+        pytest --html=report.html  # Run tests and generate HTML report
 
     - name: Upload Test Report
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4  # ✅ Updated upload-artifact action
       with:
         name: test-report
-        path: report.html  # Store test report as an artifact
+        path: report.html  # Uploads test report as an artifact
