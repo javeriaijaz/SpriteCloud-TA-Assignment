@@ -10,7 +10,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest  # Runs on Linux server in GitHub Actions
+    runs-on: ubuntu-latest  # Runs on a Linux server in GitHub Actions
 
     steps:
     - name: Checkout Repository
@@ -28,7 +28,7 @@ jobs:
 
     - name: Run UI & API Tests
       run: |
-        pytest --html=report.html  # Run tests and generate HTML report
+        pytest --html=report.html --self-contained-html --capture=sys  # Run tests and generate self-contained HTML report
 
     - name: Upload Test Report
       uses: actions/upload-artifact@v4  # Upload test report as an artifact
