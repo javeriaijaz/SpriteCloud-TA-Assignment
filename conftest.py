@@ -15,7 +15,7 @@ def setup():
     chrome_options.add_argument("--disable-extensions")  # Disable extensions to ensure clean test runs
     chrome_options.add_argument("--no-sandbox")  # Avoid sandboxing issues, common in CI environments
     chrome_options.add_argument("--disable-dev-shm-usage")  # Avoid issues related to limited memory in CI environments
-    #chrome_options.add_argument("--headless")  # Run Chrome in headless mode (no UI)
+    chrome_options.add_argument("--headless")  # Run Chrome in headless mode (no UI)
     chrome_options.add_argument("--remote-debugging-port=9222")  # Use remote debugging port (for troubleshooting)
     chrome_options.add_argument("--verbose")  # Enable verbose logging
 
