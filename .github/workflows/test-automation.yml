@@ -5,48 +5,58 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest  # Runs on a Linux server in GitHub Actions
+    runs-on: ubuntu-latest  # Runs on the latest Ubuntu GitHub runner
 
     steps:
+    
+    # Step 1: Checkout the repository
     - name: Checkout Repository
-      uses: actions/checkout@v4  # Checkout code from the repository
+      uses: actions/checkout@v4  
 
+    # Step 2: Set up Python environment
     - name: Set up Python
-      uses: actions/setup-python@v4  # Set up Python environment
+      uses: actions/setup-python@v4  
       with:
-        python-version: '3.9'  # Use Python 3.9
+        python-version: '3.9'  # Use Python 3.9 for testing
 
+    # Step 3: Install project dependencies, including Allure pytest plugin
     - name: Install Dependencies
       run: |
-        pip install -r requirements.txt  # Install dependencies
+        pip install -r requirements.txt  
         pip install chromedriver-autoinstaller  # Ensure ChromeDriver is installed
-        pip install allure-pytest  # Explicitly install Allure pytest plugin
+        pip install allure-pytest  # Install Allure pytest plugin
 
+    # Step 4: Verify Allure pytest plugin installation
     - name: Verify Allure Plugin Installation
       run: |
-        pip list | grep allure  # Debugging: Check if allure-pytest is installed
-        pytest --help | grep allure  # Check if pytest recognizes Allure options
+        pip list | grep allure  # Check if allure-pytest is installed
+        pytest --help | grep allure  # Verify pytest recognizes Allure options
 
+    # Step 5: Run UI & API Tests and store Allure results
     - name: Run UI & API Tests with Allure
       run: |
-        pytest --alluredir=allure-results --capture=sys  # Run tests and store Allure results
+        pytest --alluredir=allure-results --capture=sys  
 
+    # Step 6: Install Allure CLI dynamically (fetches latest version)
     - name: Install Allure CLI
       run: |
         sudo apt update
         sudo apt install -y default-jre  # Ensure Java is installed (Allure requires Java)
-        wget -O allure.tgz https://github.com/allure-framework/allure2/releases/latest/download/allure-2.24.0.tgz
+        LATEST_VERSION=$(curl -s https://api.github.com/repos/allure-framework/allure2/releases/latest | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
+        wget -O allure.tgz "https://github.com/allure-framework/allure2/releases/download/${LATEST_VERSION}/allure-${LATEST_VERSION}.tgz"
         tar -zxvf allure.tgz
-        sudo mv allure-2.24.0 /opt/allure
+        sudo mv allure-${LATEST_VERSION} /opt/allure
         sudo ln -s /opt/allure/bin/allure /usr/local/bin/allure
         allure --version  # Verify installation
 
+    # Step 7: Generate the Allure report from test results
     - name: Generate Allure Report
       run: |
-        allure generate allure-results --clean -o allure-report  # Convert JSON results to an HTML report
+        allure generate allure-results --clean -o allure-report  
 
+    # Step 8: Upload the Allure report as an artifact for viewing
     - name: Upload Allure Report as Artifact
       uses: actions/upload-artifact@v4
       with:
         name: allure-report
-        path: allure-report  # Upload generated report
+        path: allure-report  
