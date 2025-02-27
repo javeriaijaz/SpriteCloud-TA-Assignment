@@ -1,5 +1,5 @@
 from pages.base_page import BasePage
-from pages.locators import LoginPageLocators  # Importing locators
+from locators.locators import LoginPageLocators  # Importing locators
 
 class LoginPage(BasePage):
     """ Page Object Model for the Login Page of SauceDemo """

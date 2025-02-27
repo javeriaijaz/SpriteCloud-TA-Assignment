@@ -1,7 +1,7 @@
 # pages/inventory_page.py
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
-from pages.locators import InventoryPageLocators  # Importing locators
+from locators.locators import InventoryPageLocators  # Importing locators
 
 class InventoryPage(BasePage):
     """ Page Object Model for the Inventory Page of SauceDemo """

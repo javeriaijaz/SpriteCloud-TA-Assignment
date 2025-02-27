@@ -1,5 +1,5 @@
 from pages.base_page import BasePage
-from pages.locators import CartPageLocators  # Importing locators
+from locators.locators import CartPageLocators  # Importing locators
 
 class CartPage(BasePage):
     """Cart Page - Handles actions related to viewing the cart and proceeding to checkout"""

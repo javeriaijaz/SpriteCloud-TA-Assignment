@@ -1,5 +1,5 @@
 from pages.base_page import BasePage
-from pages.locators import CheckoutPageLocators  # Importing locators
+from locators.locators import CheckoutPageLocators  # Importing locators
 
 class CheckoutPage(BasePage):
     """Checkout Page - Handles actions related to completing the checkout process"""

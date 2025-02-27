@@ -7,6 +7,11 @@ class LoginPageLocators:
     LOGIN_BUTTON = (By.ID, "login-button")
     ERROR_MESSAGE = (By.CLASS_NAME, "error-message-container")
 
+class ProductPageLocators:
+    """Locators for Product Page"""
+    ADD_TO_CART_BUTTON = (By.XPATH, "//button[text()='Add to cart']")
+    CART_ICON = (By.CLASS_NAME, 'shopping_cart_link')
+
 class InventoryPageLocators:
     """Locators for the Inventory Page"""
     SORT_DROPDOWN = (By.CSS_SELECTOR, "select.product_sort_container")
