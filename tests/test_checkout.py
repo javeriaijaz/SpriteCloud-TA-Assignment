@@ -9,21 +9,21 @@ from faker import Faker
 class TestCheckout:
     """Test case to validate the checkout process for at least two items"""
 
+    @pytest.mark.test_metadata(
+        steps=[
+            "Log in to the application",
+            "Add at least two products to the cart",
+            "Navigate to the cart",
+            "Calculate the sum of individual product prices",
+            "Complete checkout Step One",
+            "Compare checkout summary total with sum of individual prices",
+            "Complete the checkout and verify the 'Thank you' message"
+        ],
+        expected="Final item total should match sum of individual product prices, and order should complete successfully with 'Thank you' message."
+    )
     def test_checkout_with_two_items(self, setup):
         """
         Test Case: Verify checkout process with two items and validate the final price.
-        
-        Steps:
-        1. Log in to the application.
-        2. Add at least two products to the cart.
-        3. Navigate to the cart.
-        4. Calculate the sum of the individual product prices.
-        5. Complete the checkout Step One.
-        6. Get item total from the checkout summary page and compare with sum of individual prices.
-        7. Complete the checkout and verify the "Thank you" message.
-
-        Expected Result:
-        - The final item total on the checkout summary page matches the sum of the individual product prices, and the order is successfully placed with a "Thank you" message displayed.
         """
 
         driver = setup  # Use the driver from the setup fixture
