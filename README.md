@@ -72,9 +72,19 @@ The following API test cases are automated for [ReqRes](https://reqres.in/):
 Tests are fully automated and executed via **GitHub Actions**. No manual setup is required.
 
 ### ▶️ Running Tests via GitHub Actions:
-- On every **push** or **pull request**, the tests run automatically.
-- You can also **trigger them manually** from the GitHub Actions tab.
-- Reports are automatically generated and available in the workflow run artifacts.
+🎯 GitHub Actions CI/CD
+This project runs UI & API tests automatically using GitHub Actions.
+
+🔹 How to Trigger Tests Manually
+Go to GitHub → Actions
+Select UI & API Test Automation Workflow
+Click Run workflow
+To disable auto-runs and allow manual execution only, update .github/workflows/ui_tests.yml:
+
+yaml
+Copy
+on:
+  workflow_dispatch:  # Allows manual trigger from Actions Tab
 
 ---
 
