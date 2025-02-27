@@ -21,9 +21,12 @@ jobs:
         pip install --upgrade pip
         pip install -r requirements.txt  # Install dependencies
 
-    - name: Run UI & API Tests
-      run: |
-        pytest api_tests/tests/ ui_tests/ --html=report.html --self-contained-html --css=custom_style.css --capture=sys
+    - name: Run API Tests
+      run: pytest api_tests/tests/ --html=api_report.html --self-contained-html --css=custom_style.css --capture=sys
+      
+    - name: Run UI Tests
+      run: pytest ui_tests/ --html=ui_report.html --self-contained-html --css=custom_style.css --capture=sys
+      
 
     - name: Upload Test Report
       uses: actions/upload-artifact@v4  # Upload test report as an artifact

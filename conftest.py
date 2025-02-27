@@ -27,7 +27,7 @@ def setup():
 
 def pytest_html_report_title(report):
     """Customize the report title"""
-    report.title = "UI & API Test Automation Results"
+    report.title = "Test Automation Results"
 
 def pytest_html_results_table_header(cells):
     """Modify table headers to include Test Name, Steps, and Expected Result"""
