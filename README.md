@@ -38,10 +38,6 @@ The objectives of this automation suite are:
 │   │   ├── __init__.py
 │   │   ├── api_client.py       # API client for making requests
 │   │   ├── schemas.py          # JSON schema validation
-│
-├── 📂 locators                 # Locators for UI elements
-│   ├── locators.py             # Centralized locators
-│
 ├── 📂 pages                    # Page Object Model (POM) for UI tests
 │   ├── base_page.py            # Base class for all pages
 │   ├── cart_page.py            # Page object for cart actions
@@ -49,19 +45,16 @@ The objectives of this automation suite are:
 │   ├── inventory_page.py       # Page object for inventory (products) page
 │   ├── login_page.py           # Page object for login functionality
 │   ├── product_page.py         # Page object for product-related actions
-│
 ├── 📂 ui_tests                 # UI Automation Tests
 │   ├── test_checkout.py        # Test case for checkout functionality
 │   ├── test_login.py           # Test case for login functionality
 │   ├── test_sorting.py         # Test case for sorting functionality
-│
 ├── conftest.py                 # Pytest configurations and fixtures
 ├── custom_style.css            # Custom styling for reports
 ├── pytest.ini                  # Pytest configuration file
 ├── README.md                   # Project documentation
 ├── requirements.txt            # List of dependencies
 ```
-
 
 
 ---
@@ -134,8 +127,8 @@ pip install -r requirements.txt
 
 4. **Run the tests**
 ```sh
-pytest ui_tests/ --html=ui_report.html --self-contained-html
-pytest api_tests/ --html=api_report.html --self-contained-html
+pytest ui_tests/ --html=ui_report.html --self-contained-html --css=custom_style.css
+pytest api_tests/ --html=api_report.html --self-contained-html --css=custom_style.css
 ```
 
 ### 🎯 GitHub Actions CI/CD
