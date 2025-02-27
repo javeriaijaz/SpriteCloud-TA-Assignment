@@ -20,6 +20,12 @@ jobs:
       run: |
         pip install -r requirements.txt  # Install dependencies
         pip install chromedriver-autoinstaller  # Ensure ChromeDriver is installed
+        pip install allure-pytest  # Explicitly install Allure pytest plugin
+
+    - name: Verify Allure Plugin Installation
+      run: |
+        pip list | grep allure  # Debugging: Check if allure-pytest is installed
+        pytest --help | grep allure  # Check if pytest recognizes Allure options
 
     - name: Run UI & API Tests with Allure
       run: |
