@@ -27,14 +27,15 @@ jobs:
     - name: Run UI Tests
       run: pytest ui_tests/ --html=ui_report.html --self-contained-html --css=custom_style.css --capture=sys
 
-    - name: Upload API Test Report
-      uses: actions/upload-artifact@v4  # Upload API test report
-      with:
-          name: api-test-report
-          path: api_report.html  # Upload API test report file
+    - name: Zip Test Reports
+      run: |
+        mkdir test_reports
+        mv api_report.html test_reports/
+        mv ui_report.html test_reports/
+        zip -r test_reports.zip test_reports/
 
-    - name: Upload UI Test Report
-      uses: actions/upload-artifact@v4  # Upload UI test report
+    - name: Upload Zipped Test Reports
+      uses: actions/upload-artifact@v4
       with:
-          name: ui-test-report
-          path: ui_report.html  # Upload UI test report file
+          name: test-reports
+          path: test_reports.zip  # Upload the zip file containing both reports
