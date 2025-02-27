@@ -150,6 +150,9 @@ This project runs UI & API tests automatically using GitHub Actions. The workflo
 
 ## 📊 Reports
 Test execution generates HTML reports for easy validation. The reports are available in the **GitHub Actions artifacts** after test execution.
+Here is the snippet of the  Report Generated Locally:
+
+![Project Structure](screenshots/sample_report.png)
 
 ---
 
