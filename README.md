@@ -24,6 +24,43 @@ The objectives of this automation suite are:
 
 ---
 
+# 📂 Project Structure
+The project is organized as follows:
+
+📦 SpriteCloud-TA-Assignment
+├── 📂 api_tests                # API Automation Tests
+│   ├── 📂 tests                # API test cases
+│   │   ├── test_auth.py        # Tests for authentication
+│   │   ├── test_negative.py    # Negative test cases
+│   │   ├── test_performance.py # Performance tests
+│   │   ├── test_users.py       # User-related tests
+│   ├── 📂 utils                # Utilities for API automation
+│   │   ├── __init__.py
+│   │   ├── api_client.py       # API client for making requests
+│   │   ├── schemas.py          # JSON schema validation
+│
+├── 📂 pages                    # Page Object Model (POM) for UI tests
+│   ├── base_page.py            # Base class for all pages
+│   ├── cart_page.py            # Page object for cart actions
+│   ├── checkout_page.py        # Page object for checkout process
+│   ├── inventory_page.py       # Page object for inventory (products) page
+│   ├── locators.py             # Centralized locators for UI elements
+│   ├── login_page.py           # Page object for login functionality
+│   ├── product_page.py         # Page object for product-related actions
+│
+├── 📂 ui_tests                 # UI Automation Tests
+│   ├── test_checkout.py        # Test case for checkout functionality
+│   ├── test_login.py           # Test case for login functionality
+│   ├── test_sorting.py         # Test case for sorting functionality
+│
+├── conftest.py                 # Pytest configurations and fixtures
+├── custom_style.css            # Custom styling for reports
+├── pytest.ini                  # Pytest configuration file
+├── README.md                   # Project documentation
+├── requirements.txt            # List of dependencies
+
+
+---
 ## 🛠 Technologies Used
 - 🐍 **Python 3.x**
 - 🌐 **Selenium** (for UI testing)
