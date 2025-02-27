@@ -23,13 +23,18 @@ jobs:
 
     - name: Run API Tests
       run: pytest api_tests/tests/ --html=api_report.html --self-contained-html --css=custom_style.css --capture=sys
-      
+
     - name: Run UI Tests
       run: pytest ui_tests/ --html=ui_report.html --self-contained-html --css=custom_style.css --capture=sys
-      
 
-    - name: Upload Test Report
-      uses: actions/upload-artifact@v4  # Upload test report as an artifact
+    - name: Upload API Test Report
+      uses: actions/upload-artifact@v4  # Upload API test report
       with:
-          name: test-report
-          path: report.html  # Path to the generated HTML report
+          name: api-test-report
+          path: api_report.html  # Upload API test report file
+
+    - name: Upload UI Test Report
+      uses: actions/upload-artifact@v4  # Upload UI test report
+      with:
+          name: ui-test-report
+          path: ui_report.html  # Upload UI test report file
