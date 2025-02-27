@@ -2,6 +2,9 @@ name: UI & API Test Automation
 
 on:
   workflow_dispatch:  # Allows manual execution from GitHub Actions tab
+  push:
+    branches:
+      - main  # Automatically triggers on push to main branch
 
 jobs:
   test:
@@ -49,26 +52,14 @@ jobs:
         sudo ln -s /opt/allure/bin/allure /usr/local/bin/allure
         allure --version  # Verify installation
 
-    # Step 7: Generate the Allure report as a static HTML report
+    # Step 7: Generate Allure Report
     - name: Generate Allure Report
       run: |
         allure generate allure-results --clean -o allure-report  
 
-    # Step 8: Ensure all required files are included in the report
-    - name: Prepare Allure Report for Download
-      run: |
-        mkdir -p full-allure-report
-        cp -r allure-report full-allure-report/
-        cp -r allure-results full-allure-report/  # Include test result data
-
-    # Step 9: Compress the report into a ZIP file for easy download
-    - name: Compress Allure Report
-      run: |
-        zip -r allure-report.zip full-allure-report
-
-    # Step 10: Upload the compressed Allure report as an artifact
-    - name: Upload Allure Report as Artifact
-      uses: actions/upload-artifact@v4
+    # Step 8: Deploy Allure Report to GitHub Pages
+    - name: Deploy Allure Report to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
       with:
-        name: allure-report
-        path: allure-report.zip  # Uploads the compressed Allure report
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./allure-report  # Deploys the Allure report
