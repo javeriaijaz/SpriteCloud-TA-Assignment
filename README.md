@@ -1,4 +1,4 @@
-# 🎯 spriteCloud TA Assignment 2025
+# 🎯 UI & API TA Assignment
 
 ## 📜 Table of Contents
 - [🔍 Overview](#overview)
