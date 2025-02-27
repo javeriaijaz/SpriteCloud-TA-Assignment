@@ -18,10 +18,14 @@ class TestSorting:
         ],
         expected="Product names should be sorted in reverse alphabetical order (Z-A)."
     )
-    def test_sorting_by_name_Z_A(self, setup):
+    def test_sorting_by_name_Z_A(self, setup, request):
         """ 
         Test Case: Verify that sorting items by name Z-A works correctly.
         """
+
+        # Get login credentials from pytest command-line arguments
+        username = request.config.getoption("--username")
+        password = request.config.getoption("--password")
 
         # Get the WebDriver instance to interact with the page
         driver = setup  
@@ -29,10 +33,10 @@ class TestSorting:
         inventory_page = InventoryPage(driver)  # Initialize the inventory page
 
         # Step 1: Log in to the application
-        login_page.open()  # Open the login page
-        login_page.login("standard_user", "secret_sauce")  # Log in with standard user credentials
+        login_page.open()
+        login_page.login(username, password)
 
-        # Step 2: Navigate to the inventory page (assumed implicit)
+        # Step 2: Navigate to the inventory page 
         
         # Step 3: Retrieve and store product names before sorting
         product_names_before_sorting = inventory_page.get_product_names()

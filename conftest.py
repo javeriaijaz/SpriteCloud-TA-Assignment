@@ -25,6 +25,10 @@ def setup():
     yield driver
     driver.quit()
 
+def pytest_addoption(parser):
+    parser.addoption("--username", action="store", default="standard_user", help="Username for login")
+    parser.addoption("--password", action="store", default="secret_sauce", help="Password for login")
+
 def pytest_html_report_title(report):
     """Customize the report title"""
     report.title = "Test Automation Results"

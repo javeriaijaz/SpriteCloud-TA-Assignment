@@ -21,7 +21,7 @@ class TestCheckout:
         ],
         expected="Final item total should match sum of individual product prices, and order should complete successfully with 'Thank you' message."
     )
-    def test_checkout_with_two_items(self, setup):
+    def test_checkout_with_two_items(self, setup, request):
         """
         Test Case: Verify checkout process with two items and validate the final price.
         """
@@ -33,9 +33,13 @@ class TestCheckout:
         checkout_page = CheckoutPage(driver)
         fake = Faker()
 
+        # Get login credentials from pytest command-line arguments
+        username = request.config.getoption("--username")
+        password = request.config.getoption("--password")
+
         # Step 1: Log in
         login_page.open()  # Open the login page
-        login_page.login("standard_user", "secret_sauce")  # Log in with standard user credentials
+        login_page.login(username, password) 
 
         # Step 2: Add two products to the cart
         product_page.add_product_to_cart("Sauce Labs Backpack")
