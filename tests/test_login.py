@@ -5,7 +5,7 @@ from pages.login_page import LoginPage
 class TestLogin:
     """Test cases for validating login functionality."""
 
-    @pytest.mark.parametrize("username, password", [("wrong_user", "wrong_pass")], ids=["Invalid Login Attempt"])
+    @pytest.mark.parametrize("username, password", [("wrong_user", "wrong_pass")])
     def test_invalid_login(self, setup, username, password):
         """
         Test Case: Verify that an invalid login attempt shows the correct error message.
