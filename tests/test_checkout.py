@@ -18,9 +18,12 @@ class TestCheckout:
         2. Add at least two products to the cart.
         3. Navigate to the cart.
         4. Calculate the sum of the individual product prices.
-        5. Complete the checkout Step one
-        6. Get item total from checkout summary page and compare with sum of individual prices
-        7. Complete the checkout and Verify "Thank you" message
+        5. Complete the checkout Step One.
+        6. Get item total from the checkout summary page and compare with sum of individual prices.
+        7. Complete the checkout and verify the "Thank you" message.
+
+        Expected Result:
+        - The final item total on the checkout summary page matches the sum of the individual product prices, and the order is successfully placed with a "Thank you" message displayed.
         """
 
         driver = setup  # Use the driver from the setup fixture
