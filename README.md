@@ -76,15 +76,9 @@ Tests are fully automated and executed via **GitHub Actions**. No manual setup i
 This project runs UI & API tests automatically using GitHub Actions.
 
 🔹 How to Trigger Tests Manually
-Go to GitHub → Actions
-Select UI & API Test Automation Workflow
-Click Run workflow
-To disable auto-runs and allow manual execution only, update .github/workflows/ui_tests.yml:
-
-yaml
-Copy
-on:
-  workflow_dispatch:  # Allows manual trigger from Actions Tab
+- Go to GitHub → Actions
+- Select UI & API Test Automation Workflow
+- Click Run workflow
 
 ---
 
