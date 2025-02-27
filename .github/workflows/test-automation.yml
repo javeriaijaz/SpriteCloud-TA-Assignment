@@ -23,8 +23,8 @@ jobs:
 
     - name: Run UI & API Tests with Custom Styling
       run: |
-        pytest --html=report.html --self-contained-html --css=custom_style.css --capture=sys
-    
+        pytest api_tests/tests/ ui_tests/tests/ --html=report.html --self-contained-html --css=custom_style.css --capture=sys
+
     - name: Upload Test Report
       uses: actions/upload-artifact@v4  # Upload test report as an artifact
       with:
