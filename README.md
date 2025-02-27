@@ -28,6 +28,8 @@ The objectives of this automation suite are:
 ## 📂 Project Structure
 ```
 📦 SpriteCloud-TA-Assignment
+├── 📂 .github/workflows        # GitHub Actions Workflows
+│   ├── test-automation.yml     # CI/CD workflow file
 ├── 📂 api_tests                # API Automation Tests
 │   ├── 📂 tests                # API test cases
 │   │   ├── test_auth.py        # Tests for authentication
@@ -49,11 +51,13 @@ The objectives of this automation suite are:
 │   ├── test_checkout.py        # Test case for checkout functionality
 │   ├── test_login.py           # Test case for login functionality
 │   ├── test_sorting.py         # Test case for sorting functionality
+├── config.py                   # Configuration settings
 ├── conftest.py                 # Pytest configurations and fixtures
 ├── custom_style.css            # Custom styling for reports
 ├── pytest.ini                  # Pytest configuration file
 ├── README.md                   # Project documentation
 ├── requirements.txt            # List of dependencies
+├── sample_report.png           # Sample test report output
 ```
 
 
