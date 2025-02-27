@@ -39,12 +39,14 @@ The objectives of this automation suite are:
 │   │   ├── api_client.py       # API client for making requests
 │   │   ├── schemas.py          # JSON schema validation
 │
+├── 📂 locators                 # Locators for UI elements
+│   ├── locators.py             # Centralized locators
+│
 ├── 📂 pages                    # Page Object Model (POM) for UI tests
 │   ├── base_page.py            # Base class for all pages
 │   ├── cart_page.py            # Page object for cart actions
 │   ├── checkout_page.py        # Page object for checkout process
 │   ├── inventory_page.py       # Page object for inventory (products) page
-│   ├── locators.py             # Centralized locators for UI elements
 │   ├── login_page.py           # Page object for login functionality
 │   ├── product_page.py         # Page object for product-related actions
 │
