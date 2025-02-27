@@ -1,54 +1,26 @@
 name: UI & API Test Automation
 
 on:
-  workflow_dispatch:  # Allows manual execution from GitHub Actions tab
-  push:
-    branches:
-      - main  # Run on main branch
+  workflow_dispatch:  # Allows manual trigger from GitHub Actions tab
 
 jobs:
   test:
-    runs-on: ubuntu-latest  # Use the latest Ubuntu runner
+    runs-on: ubuntu-latest  # Runs on a Linux server in GitHub Actions
 
     steps:
-    
     - name: Checkout Repository
-      uses: actions/checkout@v4  
+      uses: actions/checkout@v4  # Checkout code from the repository
 
     - name: Set up Python
-      uses: actions/setup-python@v4  
+      uses: actions/setup-python@v4  # Set up Python environment
       with:
-        python-version: '3.9'  # Use Python 3.9 for testing
+        python-version: '3.9'  # Use Python 3.9
 
     - name: Install Dependencies
       run: |
-        pip install -r requirements.txt  
-        pip install chromedriver-autoinstaller  
-        pip install allure-pytest  
+        pip install --upgrade pip
+        pip install -r requirements.txt  # Install dependencies
 
-    - name: Run UI & API Tests with Allure
+    - name: Run UI & API Tests with Custom Styling
       run: |
-        pytest --alluredir=allure-results --capture=sys  
-
-    - name: Install Allure CLI
-      run: |
-        sudo apt update
-        sudo apt install -y default-jre  
-        LATEST_VERSION=$(curl -s https://api.github.com/repos/allure-framework/allure2/releases/latest | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
-        wget -O allure.tgz "https://github.com/allure-framework/allure2/releases/download/${LATEST_VERSION}/allure-${LATEST_VERSION}.tgz"
-        tar -zxvf allure.tgz
-        sudo mv allure-${LATEST_VERSION} /opt/allure
-        sudo ln -s /opt/allure/bin/allure /usr/local/bin/allure
-        allure --version  
-
-    - name: Generate Allure Report
-      run: |
-        allure generate allure-results --clean -o allure-report  
-
-    # Deploy Allure Report to `main` branch
-    - name: Deploy Allure Report to main branch
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./allure-report  # Deploy the Allure report
-        publish_branch: main  # Deploy to `main` branch instead of `gh-pages`
+        pytest --html=report.html --self-contained-html --css=style.css --capture=sys
