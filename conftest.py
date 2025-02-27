@@ -25,3 +25,11 @@ def setup():
     yield driver  # Yield the driver to the test
 
     driver.quit()  # Quit the WebDriver after the test is done
+
+def pytest_html_report_title(report):
+    """ Customize the report title """
+    report.title = "UI & API Test Automation Results"
+
+
+
+

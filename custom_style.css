@@ -1,0 +1,130 @@
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Report Container */
+.pytest_html_report {
+    width: 90%;
+    margin: auto;
+    border-radius: 10px;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+h1 {
+    color: #0056b3;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background: #0056b3;
+    color: white;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+/* Hover Effect */
+tr:hover {
+    background: #f1f1f1;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Status Indicators */
+.passed {
+    color: green;
+    font-weight: bold;
+}
+
+.failed {
+    color: red;
+    font-weight: bold;
+}
+
+.skipped {
+    color: orange;
+    font-weight: bold;
+}
+
+/* Collapsible Test Details */
+.details-container {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+    border-left: 4px solid #0056b3;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.details-container h3 {
+    color: #0056b3;
+    font-size: 16px;
+}
+
+.details-container p {
+    color: #555;
+    font-size: 14px;
+}
+
+/* Collapsible Test Steps */
+.test-steps {
+    background: #e9ecef;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.test-steps h3 {
+    color: #0056b3;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.test-steps ul {
+    list-style-type: decimal;
+    padding-left: 20px;
+}
+
+/* Expand/Collapse Button */
+.toggle-btn {
+    background: #0056b3;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.toggle-btn:hover {
+    background: #003d82;
+}
+
+/* Hide Test Details Initially */
+.collapsible-content {
+    display: none;
+}
