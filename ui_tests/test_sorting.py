@@ -1,6 +1,7 @@
 import pytest
 from pages.inventory_page import InventoryPage
 from pages.login_page import LoginPage
+from config import Config
 
 @pytest.mark.usefixtures("setup")  # Assuming the setup fixture is defined for browser setup
 class TestSorting:
@@ -18,14 +19,14 @@ class TestSorting:
         ],
         expected="Product names should be sorted in reverse alphabetical order (Z-A)."
     )
-    def test_sorting_by_name_Z_A(self, setup, request):
+    def test_sorting_by_name_Z_A(self, setup):
         """ 
         Test Case: Verify that sorting items by name Z-A works correctly.
         """
 
-        # Get login credentials from pytest command-line arguments
-        username = request.config.getoption("--username")
-        password = request.config.getoption("--password")
+        # Get login credentials from env file
+        username = Config.USERNAME
+        password = Config.PASSWORD
 
         # Get the WebDriver instance to interact with the page
         driver = setup  

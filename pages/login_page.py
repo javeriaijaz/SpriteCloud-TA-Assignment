@@ -9,13 +9,9 @@ class LoginPage(BasePage):
     LOGIN_BUTTON = (By.ID, "login-button")
     ERROR_MESSAGE = (By.CLASS_NAME, "error-message-container")
 
-    # Base URL for the login page
-    URL = "https://www.saucedemo.com"
-
-    def open(self):
-        """ Opens the login page in the browser """
-        self.driver.get(self.URL)
-
+    def __init__(self, driver):
+        super().__init__(driver)
+        
     def login(self, username, password):
         """
         Performs login action by:
@@ -23,10 +19,10 @@ class LoginPage(BasePage):
         2. Entering password
         3. Clicking the login button
         """
-        self.enter_text(self.USERNAME_INPUT, username)  # ✅ Use `self`
-        self.enter_text(self.PASSWORD_INPUT, password)  # ✅ Use `self`
-        self.click(self.LOGIN_BUTTON)  # ✅ Use `self`
+        self.enter_text(self.USERNAME_INPUT, username) 
+        self.enter_text(self.PASSWORD_INPUT, password) 
+        self.click(self.LOGIN_BUTTON)
 
     def get_error_message(self):
         """ Retrieves the error message when login fails """
-        return self.get_text(self.ERROR_MESSAGE)  # ✅ Use `self`
+        return self.get_text(self.ERROR_MESSAGE)  

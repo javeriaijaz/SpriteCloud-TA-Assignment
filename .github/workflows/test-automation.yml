@@ -21,6 +21,16 @@ jobs:
         pip install --upgrade pip
         pip install -r requirements.txt  # Install dependencies
 
+    - name: Create .env File  # Inject environment variables dynamically
+      run: |
+        echo "BROWSER=${{ secrets.BROWSER }}" >> .env
+        echo "BASE_URL=${{ secrets.BASE_URL }}" >> .env
+        echo "USERNAME=${{ secrets.USERNAME }}" >> .env
+        echo "PASSWORD=${{ secrets.PASSWORD }}" >> .env
+        echo "API_BASE_URL=${{ secrets.API_BASE_URL }}" >> .env
+        echo "TEST_USER_EMAIL=${{ secrets.TEST_USER_EMAIL }}" >> .env
+        echo "TEST_USER_PASSWORD=${{ secrets.TEST_USER_PASSWORD }}" >> .env
+
     - name: Run API Tests
       run: pytest api_tests/tests/ --html=api_report.html --self-contained-html --css=custom_style.css --capture=sys
 

@@ -1,10 +1,11 @@
 import requests
+from config import Config
 
 class APIClient:
     """A generic API client for Reqres."""
 
     def __init__(self):
-        self.base_url = "https://reqres.in/api"
+        self.base_url = Config.API_BASE_URL
 
     def get(self, endpoint, params=None):
         """Perform a GET request."""

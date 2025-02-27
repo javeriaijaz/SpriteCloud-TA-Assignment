@@ -4,6 +4,8 @@ from pages.cart_page import CartPage
 from pages.checkout_page import CheckoutPage
 from pages.login_page import LoginPage
 from faker import Faker
+from config import Config
+
 
 @pytest.mark.usefixtures("setup")
 class TestCheckout:
@@ -33,9 +35,9 @@ class TestCheckout:
         checkout_page = CheckoutPage(driver)
         fake = Faker()
 
-        # Get login credentials from pytest command-line arguments
-        username = request.config.getoption("--username")
-        password = request.config.getoption("--password")
+        # Get login credentials from env file
+        username = Config.USERNAME
+        password = Config.PASSWORD
 
         # Step 1: Log in
         login_page.open()  # Open the login page

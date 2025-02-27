@@ -1,11 +1,15 @@
 import pytest
 from api_tests.utils.api_client import APIClient
+from config import Config
+from faker import Faker
+
+fake = Faker()
 
 api_client = APIClient()
 
 def test_login_with_invalid_email():
     """Negative test: Login with an incorrect email should return an error."""
-    payload = {"email": "invalid@example.com", "password": "password123"}
+    payload = {"email": fake.email(), "password": Config.TEST_USER_PASSWORD}
 
     try:
         response = api_client.post("/login", data=payload)
