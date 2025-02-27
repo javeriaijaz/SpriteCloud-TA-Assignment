@@ -23,4 +23,4 @@ jobs:
 
     - name: Run UI & API Tests with Custom Styling
       run: |
-        pytest --html=report.html --self-contained-html --css=style.css --capture=sys
+        pytest --html=report.html --self-contained-html --css=custom_style.css --capture=sys
