@@ -1,4 +1,4 @@
-# 🎯 UI & API TA Assignment
+# 🎯 spriteCloud TA Assignment
 
 ## 📜 Table of Contents
 - [🔍 Overview](#overview)
