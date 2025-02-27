@@ -22,6 +22,46 @@ The objectives of this automation suite are:
 - ✅ Provide test reports for validation.
 - ✅ Fully automated execution using **GitHub Workflows**.
 
+
+---
+
+## 📂 Project Structure
+```
+📦 SpriteCloud-TA-Assignment
+├── 📂 api_tests                # API Automation Tests
+│   ├── 📂 tests                # API test cases
+│   │   ├── test_auth.py        # Tests for authentication
+│   │   ├── test_negative.py    # Negative test cases
+│   │   ├── test_performance.py # Performance tests
+│   │   ├── test_users.py       # User-related tests
+│   ├── 📂 utils                # Utilities for API automation
+│   │   ├── __init__.py
+│   │   ├── api_client.py       # API client for making requests
+│   │   ├── schemas.py          # JSON schema validation
+│
+├── 📂 pages                    # Page Object Model (POM) for UI tests
+│   ├── base_page.py            # Base class for all pages
+│   ├── cart_page.py            # Page object for cart actions
+│   ├── checkout_page.py        # Page object for checkout process
+│   ├── inventory_page.py       # Page object for inventory (products) page
+│   ├── locators.py             # Centralized locators for UI elements
+│   ├── login_page.py           # Page object for login functionality
+│   ├── product_page.py         # Page object for product-related actions
+│
+├── 📂 ui_tests                 # UI Automation Tests
+│   ├── test_checkout.py        # Test case for checkout functionality
+│   ├── test_login.py           # Test case for login functionality
+│   ├── test_sorting.py         # Test case for sorting functionality
+│
+├── conftest.py                 # Pytest configurations and fixtures
+├── custom_style.css            # Custom styling for reports
+├── pytest.ini                  # Pytest configuration file
+├── README.md                   # Project documentation
+├── requirements.txt            # List of dependencies
+```
+
+
+
 ---
 
 ## 🛠 Technologies Used
@@ -69,16 +109,43 @@ The following API test cases are automated for [ReqRes](https://reqres.in/):
 ---
 
 ## 🚀 Execution
-Tests are fully automated and executed via **GitHub Actions**. No manual setup is required.
+Tests are fully automated and executed via **GitHub Actions**. No manual setup is required if you rely on CI/CD. However, if someone wants to run tests **locally**, follow these steps:
 
-### ▶️ Running Tests via GitHub Actions:
-🎯 GitHub Actions CI/CD
-This project runs UI & API tests automatically using GitHub Actions.
+### 🏗 Running Tests Locally
+1. **Clone the repository**
+   ```sh
+git clone https://github.com/yourname/spritecloud-ta-assignment-2025.git
+cd spritecloud-ta-assignment-2025
+```
 
-🔹 How to Trigger Tests Manually
+2. **Set up a virtual environment (optional but recommended)**
+   ```sh
+python -m venv venv
+source venv/bin/activate    # macOS/Linux
+.\venv\Scripts\activate    # Windows
+```
+
+3. **Install dependencies**
+   ```sh
+pip install -r requirements.txt
+```
+
+4. **Run the tests**
+   ```sh
+pytest ui_tests/ --html=ui_report.html --self-contained-html
+pytest api_tests/ --html=api_report.html --self-contained-html
+```
+
+### 🎯 GitHub Actions CI/CD
+This project runs UI & API tests automatically using GitHub Actions. The workflow generates a report as an artifact, which can be downloaded from the GitHub Actions run page.
+
+🔹 **How to Trigger Tests Manually**
 - Go to GitHub → Actions
-- Select UI & API Test Automation Workflow
-- Click Run workflow
+- Select **UI & API Test Automation Workflow**
+- Click **Run workflow**
+- Go to GitHub → Actions
+- Select **UI & API Test Automation Workflow**
+- Click **Run workflow**
 
 ---
 
@@ -96,9 +163,6 @@ Test execution generates HTML reports for easy validation. The reports are avail
 ---
 
 ## 🤖 AI Usage Disclosure
-AI assistance was used in structuring this **README.md** file and refining the test scenarios for clarity and completeness. The actual implementation was manually written and reviewed to ensure accuracy and correctness.
+I used AI to help structure this README.md file, but the actual implementation was written and reviewed manually to ensure accuracy. I also got some help with setting up the GitHub workflow file.
 
 ---
-
-### 👨‍💻 Author
-Developed by **[Your Name]** | QA Engineer 🚀
