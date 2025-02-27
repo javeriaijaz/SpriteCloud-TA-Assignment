@@ -113,25 +113,25 @@ Tests are fully automated and executed via **GitHub Actions**. No manual setup i
 
 ### 🏗 Running Tests Locally
 1. **Clone the repository**
-   ```sh
+```sh
 git clone https://github.com/yourname/spritecloud-ta-assignment-2025.git
 cd spritecloud-ta-assignment-2025
 ```
 
 2. **Set up a virtual environment (optional but recommended)**
-   ```sh
+```sh
 python -m venv venv
 source venv/bin/activate    # macOS/Linux
 .\venv\Scripts\activate    # Windows
 ```
 
 3. **Install dependencies**
-   ```sh
+```sh
 pip install -r requirements.txt
 ```
 
 4. **Run the tests**
-   ```sh
+```sh
 pytest ui_tests/ --html=ui_report.html --self-contained-html
 pytest api_tests/ --html=api_report.html --self-contained-html
 ```
@@ -140,9 +140,6 @@ pytest api_tests/ --html=api_report.html --self-contained-html
 This project runs UI & API tests automatically using GitHub Actions. The workflow generates a report as an artifact, which can be downloaded from the GitHub Actions run page.
 
 🔹 **How to Trigger Tests Manually**
-- Go to GitHub → Actions
-- Select **UI & API Test Automation Workflow**
-- Click **Run workflow**
 - Go to GitHub → Actions
 - Select **UI & API Test Automation Workflow**
 - Click **Run workflow**
