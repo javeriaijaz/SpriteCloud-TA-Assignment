@@ -3,7 +3,6 @@
 ## 📜 Table of Contents
 - [🔍 Overview](#overview)
 - [🛠 Technologies Used](#technologies-used)
-- [⚙️ Setup Instructions](#setup-instructions)
 - [📝 Test Scenarios](#test-scenarios)
   - [🖥 UI Tests](#ui-tests)
   - [🔌 API Tests](#api-tests)
@@ -21,75 +20,18 @@ The objectives of this automation suite are:
 - ✅ Perform UI testing on [SauceDemo](https://www.saucedemo.com/).
 - ✅ Validate API functionality of [ReqRes](https://reqres.in/).
 - ✅ Provide test reports for validation.
+- ✅ Fully automated execution using **GitHub Workflows**.
 
 ---
 
-# 📂 Project Structure
-The project is organized as follows:
-
-📦 SpriteCloud-TA-Assignment
-├── 📂 api_tests                # API Automation Tests
-│   ├── 📂 tests                # API test cases
-│   │   ├── test_auth.py        # Tests for authentication
-│   │   ├── test_negative.py    # Negative test cases
-│   │   ├── test_performance.py # Performance tests
-│   │   ├── test_users.py       # User-related tests
-│   ├── 📂 utils                # Utilities for API automation
-│   │   ├── __init__.py
-│   │   ├── api_client.py       # API client for making requests
-│   │   ├── schemas.py          # JSON schema validation
-│
-├── 📂 pages                    # Page Object Model (POM) for UI tests
-│   ├── base_page.py            # Base class for all pages
-│   ├── cart_page.py            # Page object for cart actions
-│   ├── checkout_page.py        # Page object for checkout process
-│   ├── inventory_page.py       # Page object for inventory (products) page
-│   ├── locators.py             # Centralized locators for UI elements
-│   ├── login_page.py           # Page object for login functionality
-│   ├── product_page.py         # Page object for product-related actions
-│
-├── 📂 ui_tests                 # UI Automation Tests
-│   ├── test_checkout.py        # Test case for checkout functionality
-│   ├── test_login.py           # Test case for login functionality
-│   ├── test_sorting.py         # Test case for sorting functionality
-│
-├── conftest.py                 # Pytest configurations and fixtures
-├── custom_style.css            # Custom styling for reports
-├── pytest.ini                  # Pytest configuration file
-├── README.md                   # Project documentation
-├── requirements.txt            # List of dependencies
-
-
----
 ## 🛠 Technologies Used
 - 🐍 **Python 3.x**
 - 🌐 **Selenium** (for UI testing)
 - 🧪 **pytest** (for test execution and reporting)
 - 📡 **requests** (for API testing)
 - 📜 **pytest-html** (for generating HTML reports)
+- ⚙️ **GitHub Actions** (for CI/CD automation)
 - 🖥 **webdriver-manager** (for managing browser drivers)
-
----
-
-## ⚙️ Setup Instructions
-To set up and run the tests, follow these steps:
-
-### 1️⃣ Clone the Repository
-```sh
-git clone <repository-url>
-cd <repository-folder>
-```
-
-### 2️⃣ Create a Virtual Environment (Optional but Recommended)
-```sh
-python -m venv venv
-source venv/bin/activate  # On Windows use: venv\Scripts\activate
-```
-
-### 3️⃣ Install Dependencies
-```sh
-pip install -r requirements.txt
-```
 
 ---
 
@@ -127,35 +69,25 @@ The following API test cases are automated for [ReqRes](https://reqres.in/):
 ---
 
 ## 🚀 Execution
-Run the tests using pytest:
+Tests are fully automated and executed via **GitHub Actions**. No manual setup is required.
 
-### ▶️ Running UI Tests:
-```sh
-pytest tests/ui --html=reports/ui_test_report.html --self-contained-html
-```
-
-### ▶️ Running API Tests:
-```sh
-pytest tests/api --html=reports/api_test_report.html --self-contained-html
-```
-
-### ▶️ Running All Tests:
-```sh
-pytest --html=reports/full_test_report.html --self-contained-html
-```
+### ▶️ Running Tests via GitHub Actions:
+- On every **push** or **pull request**, the tests run automatically.
+- You can also **trigger them manually** from the GitHub Actions tab.
+- Reports are automatically generated and available in the workflow run artifacts.
 
 ---
 
 ## 📊 Reports
-Test execution generates HTML reports for easy validation. The reports can be found in the `reports/` directory after test execution.
+Test execution generates HTML reports for easy validation. The reports are available in the **GitHub Actions artifacts** after test execution.
 
 ---
 
 ## 🤔 Assumptions
 - 🏗 UI selectors are stable and not frequently changing.
 - 📜 API response structure remains consistent as per ReqRes documentation.
-- 🛠 The environment has the necessary dependencies installed before running the tests.
-- 🌍 Internet access is available for API requests.
+- 🛠 The GitHub environment has all necessary dependencies pre-installed.
+- 🌍 Internet access is available for API requests and test execution.
 
 ---
 
