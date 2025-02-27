@@ -19,7 +19,6 @@ jobs:
     - name: Install Dependencies
       run: |
         pip install -r requirements.txt  # Install dependencies
-        pip install allure-pytest  # Install Allure pytest plugin
         pip install chromedriver-autoinstaller  # Ensure ChromeDriver is installed
 
     - name: Run UI & API Tests with Allure
@@ -29,7 +28,12 @@ jobs:
     - name: Install Allure CLI
       run: |
         sudo apt update
-        sudo apt install -y allure  # Install Allure CLI
+        sudo apt install -y default-jre  # Ensure Java is installed (Allure requires Java)
+        wget -O allure.tgz https://github.com/allure-framework/allure2/releases/latest/download/allure-2.24.0.tgz
+        tar -zxvf allure.tgz
+        sudo mv allure-2.24.0 /opt/allure
+        sudo ln -s /opt/allure/bin/allure /usr/local/bin/allure
+        allure --version  # Verify installation
 
     - name: Generate Allure Report
       run: |
