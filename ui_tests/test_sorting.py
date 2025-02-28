@@ -34,7 +34,7 @@ class TestSorting:
         inventory_page = InventoryPage(driver)  # Initialize the inventory page
 
         # Step 1: Log in to the application
-        login_page.open()
+        login_page.navigate_to_url()
         login_page.login(username, password)
 
         # Step 2: Navigate to the inventory page 

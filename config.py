@@ -6,7 +6,6 @@ load_dotenv()
 
 class Config:
     # UI Automation Config
-    BROWSER = os.getenv("BROWSER", "chrome")  # Default to Chrome
     BASE_URL = os.getenv("BASE_URL")
     USERNAME = os.getenv("USERNAME")
     PASSWORD = os.getenv("PASSWORD")

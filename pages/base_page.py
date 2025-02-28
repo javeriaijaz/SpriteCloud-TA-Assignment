@@ -12,7 +12,7 @@ class BasePage:
         self.driver = driver
         self.wait = WebDriverWait(driver, 30)
     
-    def open(self):
+    def navigate_to_url(self):
         self.driver.get(self.URL)
 
     def find_element(self, locator, timeout=30):
@@ -24,11 +24,17 @@ class BasePage:
 
     def wait_for_element_visible(self, locator, timeout=30):
         """Wait for element to be visible and return it."""
-        return WebDriverWait(self.driver, timeout).until(EC.visibility_of_element_located(locator))
+        try:
+            return WebDriverWait(self.driver, timeout).until(EC.visibility_of_element_located(locator))
+        except TimeoutException:
+            raise Exception(f"Element {locator} is not visible after {timeout} seconds.")
 
     def wait_for_element_clickable(self, locator, timeout=30):
         """Wait for element to be clickable and return it."""
-        return WebDriverWait(self.driver, timeout).until(EC.element_to_be_clickable(locator))
+        try:
+            return WebDriverWait(self.driver, timeout).until(EC.element_to_be_clickable(locator))
+        except TimeoutException:
+            raise Exception(f"Element {locator} is not clickable after {timeout} seconds.")
 
     def click(self, locator, timeout=30):
         """Wait for element to be clickable and perform a click."""

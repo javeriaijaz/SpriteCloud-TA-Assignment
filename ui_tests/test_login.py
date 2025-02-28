@@ -24,7 +24,7 @@ class TestLogin:
         driver = setup  # Assign the WebDriver instance from the pytest fixture
         login_page = LoginPage(driver)  # Initialize the LoginPage with WebDriver
 
-        login_page.open()  # Open the login page
+        login_page.navigate_to_url()  # Open the login page
         login_page.login(username, password)  # Enter invalid credentials
 
         # Validate that the correct error message is displayed

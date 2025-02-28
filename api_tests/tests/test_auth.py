@@ -10,5 +10,5 @@ def test_successful_login():
     payload = {"email": Config.TEST_USER_EMAIL, "password": Config.TEST_USER_PASSWORD}
     response = api_client.post("/login", data=payload)
     
-    # Validate Status Code & Token
+    # Validate Token
     assert "token" in response

@@ -13,4 +13,4 @@ class ProductPage(BasePage):
 
     def go_to_cart(self):
         """Navigate to the cart page to review items in the cart"""
-        self.click(self.CART_ICON)  # ✅ Use `self`
+        self.click(self.CART_ICON) 

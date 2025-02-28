@@ -5,29 +5,35 @@ from faker import Faker
 fake = Faker()
 api_client = APIClient()
 
-api_client = APIClient()
+# Define variables for reusability
+PAGE_NUMBER = 2
+USER_ID = 2
+JOB_TITLE = "Senior QA Engineer"
 
 def test_get_list_users():
     """Test retrieving a list of users."""
-    response = api_client.get("/users?page=2")
     
-    # Validate Status Code
-    assert response["page"] == 2
-    
+    response = api_client.get(f"/users?page={PAGE_NUMBER}")
+
+    # Validate page value
+    assert response["page"] == PAGE_NUMBER, f"Expected page {PAGE_NUMBER}, got {response['page']}"
+
     # Validate Schema
     validate_json(response, USER_LIST_SCHEMA)
 
 def test_update_user():
     """Test updating a user's details."""
-    payload = {"name": fake.first_name(), "job": "Senior QA Engineer"}
-    response = api_client.put("/users/2", data=payload)
     
-    # Validate Update
-    assert response["job"] == "Senior QA Engineer"
+    payload = {"name": fake.first_name(), "job": JOB_TITLE}
+    response = api_client.put(f"/users/{USER_ID}", data=payload)
+
+    # Validate job update
+    assert response["job"] == JOB_TITLE, f"Expected job '{JOB_TITLE}', got '{response['job']}'"
 
 def test_delete_user():
     """Test deleting a user."""
-    response = api_client.delete("/users/2")
     
-    # Validate Status Code
-    assert response == {}  # Expect empty response
+    response = api_client.delete(f"/users/{USER_ID}")
+
+    # Validate response is empty
+    assert response == {}, f"Expected empty response, got {response}"

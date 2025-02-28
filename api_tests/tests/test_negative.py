@@ -22,7 +22,7 @@ def test_login_with_invalid_email():
 
 def test_login_with_missing_password():
     """Negative test: Login without providing a password should return an error."""
-    payload = {"email": "eve.holt@reqres.in"}  # Missing password
+    payload = {"email": Config.TEST_USER_EMAIL}  # Missing password
 
     try:
         response = api_client.post("/login", data=payload)

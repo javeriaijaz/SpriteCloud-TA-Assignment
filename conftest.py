@@ -2,6 +2,7 @@ import pytest
 from selenium import webdriver
 import chromedriver_autoinstaller
 import ssl
+from config import Config
 
 ssl._create_default_https_context = ssl._create_unverified_context
 

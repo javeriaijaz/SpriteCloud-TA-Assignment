@@ -13,22 +13,18 @@ def test_delayed_response(delay):
     Measures the actual response time of the API for a given delay and validates performance.
     
     Steps:
-    1. Record start time before making the request.
-    2. Call the API with a specific delay parameter.
-    3. Record end time after receiving the response.
-    4. Calculate and store the actual response time.
-    5. If the response takes excessively long, the test is skipped.
-    6. Validate that the response time is within an acceptable range.
+    1. Call the API with a specific delay parameter.
+    2. Extract response time directly from `response.elapsed.total_seconds()`.
+    3. Store the response time for reporting.
+    4. If the response takes excessively long, the test is skipped.
+    5. Validate that the response time is within an acceptable range.
     """
 
-    start_time = time.time()  # Start time before the API call
-    response = api_client.get(f"/users?delay={delay}")  # Make the API request with delay
-    end_time = time.time()  # End time after receiving the response
+    response = api_client.get_response(f"/users?delay={delay}")  # Make the API request with delay
+    response_time = response.elapsed.total_seconds()  # Extract actual response time
 
-    response_time = end_time - start_time  # Calculate the total response duration
-
-    # Store response time for pytest-html reporting
-    response_times[f"Delay {delay}s"] = f"{response_time:.2f}s"
+    # Store the response time for pytest-html reporting
+    response_times[f"delay_{delay}"] = response_time
 
     # Skip the test if API response time exceeds delay + 10 seconds
     if response_time > delay + 10:
@@ -38,4 +34,3 @@ def test_delayed_response(delay):
     assert delay <= response_time <= delay + 10, (
         f"Expected response close to {delay}s, but took {response_time:.2f}s"
     )
-

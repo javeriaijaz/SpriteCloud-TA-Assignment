@@ -11,6 +11,10 @@ class APIClient:
         """Perform a GET request."""
         response = requests.get(f"{self.base_url}{endpoint}", params=params)
         return self._validate_response(response)
+    
+    def get_response(self, endpoint):
+        response = requests.get(self.base_url + endpoint)
+        return response 
 
     def post(self, endpoint, data=None):
         """Perform a POST request."""
