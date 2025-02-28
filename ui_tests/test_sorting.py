@@ -3,7 +3,7 @@ from pages.inventory_page import InventoryPage
 from pages.login_page import LoginPage
 from config import Config
 
-@pytest.mark.usefixtures("setup")  # Assuming the setup fixture is defined for browser setup
+@pytest.mark.usefixtures("setup")
 class TestSorting:
     """Test case for validating sorting functionality by name (Z-A)."""
 
