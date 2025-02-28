@@ -24,7 +24,6 @@ class TestLogin:
         driver = setup
         login_page = LoginPage(driver)
         
-        # Open the Login Page URL
         login_page.navigate_to_url()
         login_page.login(username, password)
 

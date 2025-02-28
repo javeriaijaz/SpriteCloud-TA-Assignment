@@ -9,10 +9,10 @@ class InventoryPage(BasePage):
 
     def select_sort_order(self, order="Z-A"):
         """Select sorting order from the dropdown."""
-        self.find_element(self.SORT_DROPDOWN).click()  # ✅ Use `self`
+        self.find_element(self.SORT_DROPDOWN).click()
         sort_option = (By.XPATH, f"//option[text()='{order}']")
         self.find_element(sort_option).click()
 
     def get_product_names(self):
         """Get the names of all products displayed."""
-        return self.get_elements_text(self.PRODUCTS_LIST)  # ✅ Use `self`
+        return self.get_elements_text(self.PRODUCTS_LIST) 

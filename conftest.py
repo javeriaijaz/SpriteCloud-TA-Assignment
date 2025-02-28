@@ -2,7 +2,6 @@ import pytest
 from selenium import webdriver
 import chromedriver_autoinstaller
 import ssl
-from config import Config
 
 ssl._create_default_https_context = ssl._create_unverified_context
 
@@ -20,7 +19,6 @@ def setup():
     chrome_options.add_argument("--remote-debugging-port=9222")
     chrome_options.add_argument("--verbose")
 
-    # Initialize WebDriver
     driver = webdriver.Chrome(options=chrome_options)
     driver.maximize_window()
     yield driver

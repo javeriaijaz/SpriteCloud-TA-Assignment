@@ -40,7 +40,7 @@ class TestCheckout:
         password = Config.PASSWORD
 
         # Step 1: Log in
-        login_page.navigate_to_url()  # Open the login page
+        login_page.navigate_to_url() 
         login_page.login(username, password) 
 
         # Step 2: Add two products to the cart

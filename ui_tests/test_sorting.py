@@ -30,8 +30,8 @@ class TestSorting:
 
         # Get the WebDriver instance to interact with the page
         driver = setup  
-        login_page = LoginPage(driver)  # Initialize the login page
-        inventory_page = InventoryPage(driver)  # Initialize the inventory page
+        login_page = LoginPage(driver)
+        inventory_page = InventoryPage(driver)
 
         # Step 1: Log in to the application
         login_page.navigate_to_url()

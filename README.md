@@ -113,7 +113,7 @@ Tests are fully automated and executed via **GitHub Actions**. No manual setup i
 ### 🏗 Running Tests Locally
 1. **Clone the repository**
 ```sh
-git clone https://github.com/yourname/spritecloud-ta-assignment-2025.git
+git clone https://github.com/javeriaijaz/SpriteCloud-TA-Assignment
 cd spritecloud-ta-assignment-2025
 ```
 
