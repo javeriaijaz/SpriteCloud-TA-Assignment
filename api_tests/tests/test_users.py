@@ -5,7 +5,6 @@ from faker import Faker
 fake = Faker()
 api_client = APIClient()
 
-# Define variables for reusability
 PAGE_NUMBER = 2
 USER_ID = 2
 JOB_TITLE = "Senior QA Engineer"

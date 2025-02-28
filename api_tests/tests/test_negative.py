@@ -37,5 +37,4 @@ def test_get_non_existing_user():
     try:
         response = api_client.get("/users/99999")
     except Exception as e:
-        print("Exception:", e)  # Debugging
         assert "404" in str(e), f"Expected 404 error but got {str(e)}"

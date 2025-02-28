@@ -7,7 +7,7 @@ api_client = APIClient()
 # Dictionary to store response times for pytest-html reporting
 response_times = {}
 
-@pytest.mark.parametrize("delay", [1, 2, 3])  # Test API response delay for 1, 2, and 3 seconds
+@pytest.mark.parametrize("delay", [1, 2, 3])
 def test_delayed_response(delay):
     """
     Measures the actual response time of the API for a given delay and validates performance.
@@ -20,8 +20,8 @@ def test_delayed_response(delay):
     5. Validate that the response time is within an acceptable range.
     """
 
-    response = api_client.get_response(f"/users?delay={delay}")  # Make the API request with delay
-    response_time = response.elapsed.total_seconds()  # Extract actual response time
+    response = api_client.get_response(f"/users?delay={delay}")
+    response_time = response.elapsed.total_seconds()
 
     # Store the response time for pytest-html reporting
     response_times[f"delay_{delay}"] = response_time
