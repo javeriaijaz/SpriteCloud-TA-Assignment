@@ -162,6 +162,6 @@ Here is the snippet of the  Report Generated Locally:
 ---
 
 ## 🤖 AI Usage Disclosure
-I used AI to help structure this README.md file, but the actual implementation was written and reviewed manually to ensure accuracy. I also got some help with setting up the GitHub workflow file.
+I used OpenAI to help structure this README.md file, but the actual implementation was written and reviewed manually to ensure accuracy. I also got some help with setting up the GitHub workflow file.
 
 ---
