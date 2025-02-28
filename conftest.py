@@ -32,7 +32,7 @@ def pytest_html_report_title(report):
 
 def pytest_html_results_table_header(cells):
     """Modify table headers to include Test Name, Steps, and Expected Result"""
-    cells.insert(1, "<th>Test Name</th>")  # Rename test name header
+    cells.insert(1, "<th>Test Name</th>")
     cells.insert(2, "<th>Steps</th>")
     cells.insert(3, "<th>Expected Result</th>")
 
@@ -41,15 +41,12 @@ def pytest_html_results_table_row(report, cells):
     metadata = getattr(report, "metadata", {})
 
     # Extract test function name
-    full_test_name = report.nodeid.split("::")[-1]  # Extracts only the function name
+    full_test_name = report.nodeid.split("::")[-1]
 
     # Format the test name into a readable sentence
     formatted_test_name = (
-        "Test " + full_test_name.replace("_", " ").title()  # Capitalize each word
-    ).replace("Test Test ", "Test ")  # Avoid "Test Test" if function name starts with "test_"
-
-    print(f"DEBUG: report.nodeid -> {report.nodeid}")  # Debugging line to check nodeid
-
+        "Test " + full_test_name.replace("_", " ").title()
+    ).replace("Test Test ", "Test ")
     steps = "<br>".join(metadata.get("steps", ["No steps provided"]))
     expected = metadata.get("expected", "No expected result")
 
@@ -71,5 +68,5 @@ def pytest_runtest_makereport(item, call):
         metadata["steps"] = marker.kwargs.get("steps", [])
         metadata["expected"] = marker.kwargs.get("expected", "")
 
-    report.metadata = metadata  # Attach metadata to the report
+    report.metadata = metadata 
 

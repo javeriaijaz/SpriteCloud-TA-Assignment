@@ -28,8 +28,8 @@ class TestCheckout:
         Test Case: Verify checkout process with two items and validate the final price.
         """
 
-        driver = setup  # Use the driver from the setup fixture
-        login_page = LoginPage(driver)  # Initialize the login page
+        driver = setup 
+        login_page = LoginPage(driver)
         product_page = ProductPage(driver)
         cart_page = CartPage(driver)
         checkout_page = CheckoutPage(driver)

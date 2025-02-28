@@ -21,11 +21,12 @@ class TestLogin:
         """
         Test Case: Verify that an invalid login attempt shows the correct error message.
         """
-        driver = setup  # Assign the WebDriver instance from the pytest fixture
-        login_page = LoginPage(driver)  # Initialize the LoginPage with WebDriver
-
-        login_page.navigate_to_url()  # Open the login page
-        login_page.login(username, password)  # Enter invalid credentials
+        driver = setup
+        login_page = LoginPage(driver)
+        
+        # Open the Login Page URL
+        login_page.navigate_to_url()
+        login_page.login(username, password)
 
         # Validate that the correct error message is displayed
         assert "Epic sadface" in login_page.get_error_message(), "Error message is incorrect!"

@@ -14,28 +14,28 @@ def test_login_with_invalid_email():
     try:
         response = api_client.post("/login", data=payload)
     except Exception as e:
-        response = str(e)  # Convert exception message to string for assertion
+        response = str(e)  
 
-    assert "API Error: 400" in response  # Ensure correct status code
-    assert "user not found" in response  # Ensure correct error message
+    assert "API Error: 400" in response
+    assert "user not found" in response 
 
 
 def test_login_with_missing_password():
     """Negative test: Login without providing a password should return an error."""
-    payload = {"email": Config.TEST_USER_EMAIL}  # Missing password
+    payload = {"email": Config.TEST_USER_EMAIL}
 
     try:
         response = api_client.post("/login", data=payload)
     except Exception as e:
-        response = str(e)  # Convert exception message to string for assertion
+        response = str(e) 
 
-    assert "API Error: 400" in response  # Ensure correct status code
-    assert "Missing password" in response  # Ensure correct error message
+    assert "API Error: 400" in response
+    assert "Missing password" in response
 
 def test_get_non_existing_user():
     """Negative test: Fetching a non-existing user should return 404."""
     try:
-        response = api_client.get("/users/99999")  # Request for a non-existent user
+        response = api_client.get("/users/99999")
     except Exception as e:
         print("Exception:", e)  # Debugging
         assert "404" in str(e), f"Expected 404 error but got {str(e)}"
