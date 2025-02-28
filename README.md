@@ -157,7 +157,7 @@ Here is the snippet of the  Report Generated Locally:
 - 🏗 UI selectors are stable and not frequently changing.
 - 📜 API response structure remains consistent as per ReqRes documentation.
 - 🛠 The GitHub environment has all necessary dependencies pre-installed.
-- 🌍 Internet access is available for API requests and test execution.
+- 🚀 Setting this up for a single environment for now, focusing on the Chrome browser.
 
 ---
 
