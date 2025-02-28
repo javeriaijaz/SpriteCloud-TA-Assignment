@@ -34,10 +34,10 @@ class TestSorting:
         inventory_page = InventoryPage(driver)
 
         # Step 1: Log in to the application
+        # Step 2: Navigate to the inventory page 
         login_page.navigate_to_url()
         login_page.login(username, password)
 
-        # Step 2: Navigate to the inventory page 
         
         # Step 3: Retrieve and store product names before sorting
         product_names_before_sorting = inventory_page.get_product_names()
