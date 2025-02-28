@@ -1,4 +1,3 @@
-import time
 import pytest
 from api_tests.utils.api_client import APIClient
 

@@ -1,4 +1,3 @@
-import pytest
 from api_tests.utils.api_client import APIClient
 from config import Config
 from faker import Faker
