@@ -6,6 +6,7 @@ api_client = APIClient()
 
 # Dictionary to store response times for pytest-html reporting
 response_times = {}
+threshold = 10
 
 @pytest.mark.parametrize("delay", [1, 2, 3])
 def test_delayed_response(delay):
@@ -31,6 +32,6 @@ def test_delayed_response(delay):
         pytest.skip(f"API took too long ({response_time:.2f}s), skipping test.")
 
     # Assert that response time is within expected limits
-    assert delay <= response_time <= delay + 10, (
+    assert delay <= response_time <= delay + threshold, (
         f"Expected response close to {delay}s, but took {response_time:.2f}s"
     )
