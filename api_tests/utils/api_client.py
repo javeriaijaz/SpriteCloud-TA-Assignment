@@ -1,5 +1,6 @@
 import requests
 from config import Config
+from http import HTTPStatus
 
 class APIClient:
     """A generic API client for Reqres."""
@@ -33,7 +34,7 @@ class APIClient:
 
     def _validate_response(self, response, allow_empty=False):
         """Validate response status and return JSON or raise exception."""
-        if response.status_code in [200, 201, 204] and (allow_empty or response.text):
+        if response.status_code in [HTTPStatus.OK, HTTPStatus.CREATED, HTTPStatus.NO_CONTENT] and (allow_empty or response.text):
             return response.json() if response.text else {}
         else:
             raise Exception(
