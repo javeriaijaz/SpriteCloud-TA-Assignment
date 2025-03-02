@@ -27,7 +27,7 @@ def test_delayed_response(delay):
     response_times[f"delay_{delay}"] = response_time
 
     # Skip the test if API response time exceeds delay + 10 seconds
-    if response_time > delay + 10:
+   if response_time > delay + threshold:
         pytest.skip(f"API took too long ({response_time:.2f}s), skipping test.")
 
     # Assert that response time is within expected limits
